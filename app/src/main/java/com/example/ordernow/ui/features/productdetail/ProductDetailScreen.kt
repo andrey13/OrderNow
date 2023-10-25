@@ -1,4 +1,9 @@
 package com.example.ordernow.ui.features.productdetail
 
-class ProductDetailScreen {
+import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
+
+@Composable
+fun ProductDetailScreen(viewModel: ProductDetailViewModel = hiltViewModel()) {
+
 }
