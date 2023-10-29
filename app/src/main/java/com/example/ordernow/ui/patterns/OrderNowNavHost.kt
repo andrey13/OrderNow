@@ -9,6 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.ordernow.common.navigation.NavigationBarSection
 import com.example.ordernow.common.navigation.OrderNowScreenRoute
+import com.example.ordernow.common.navigation.navigateSaved
+import com.example.ordernow.common.navigation.popUp
 import com.example.ordernow.main.OrderNowState
 import com.example.ordernow.ui.features.cart.CartScreen
 import com.example.ordernow.ui.features.home.HomeScreen
@@ -31,23 +33,35 @@ fun OrderNowNavHost(
 
 fun NavGraphBuilder.appSoGraph(appState: OrderNowState) {
 
-    // Home Screen Graph
-    composable(NavigationBarSection.Home.route) {
-        HomeScreen()
+    val homeRoute = OrderNowScreenRoute.Home.route
+    val listRoute = OrderNowScreenRoute.ProductList.route
+    val detailRoute = OrderNowScreenRoute.ProductDetail.route
+
+    val goToListFromHome: () -> Unit = {
+        appState.navigateSaved(listRoute, homeRoute)
     }
 
-    // Cart Screen Graph
+    val goToDetailFromList: () -> Unit = {
+        appState.navigateSaved(detailRoute, listRoute)
+    }
+
+    val goBack: () -> Unit = {
+        appState.popUp()
+    }
+
+    composable(NavigationBarSection.Home.route) {
+        HomeScreen(goToProductList = goToListFromHome)
+    }
+
     composable(NavigationBarSection.Cart.route) {
         CartScreen()
     }
 
-    // Product List Screen Graph
     composable(OrderNowScreenRoute.ProductList.route) {
-        ProductListScreen()
+        ProductListScreen(goToProductDetail = goToDetailFromList)
     }
 
-    // Product Detail Screen Graph
     composable(OrderNowScreenRoute.ProductDetail.route) {
-        ProductDetailScreen()
+        ProductDetailScreen(goToBack = goBack)
     }
 }

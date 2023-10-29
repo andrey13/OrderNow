@@ -23,7 +23,9 @@ fun OrderNowScreen() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
+
             val appState = rememberAppState()
+
             Scaffold(
                 scaffoldState = appState.scaffoldState,
                 topBar = { OrderNowTopBar() },

@@ -80,6 +80,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     //implementation("androidx.compose.runtime:runtime-livedata:1.2.1")
 
+    //coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+
     // hilt
     implementation("com.google.dagger:hilt-android:2.48.1")
 //    kapt("com.google.dagger:hilt-android-compiler:2.44")

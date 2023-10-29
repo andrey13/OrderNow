@@ -23,6 +23,7 @@ fun OrderNowBottomBar(navController: NavHostController) {
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+
     BottomNavigation(
         backgroundColor = MaterialTheme.colors.background,
         contentColor = contentColorFor(MaterialTheme.colors.background),
